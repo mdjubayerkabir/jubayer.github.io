@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Details</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>body { background: #0f172a; color: white; }</style>
+</head>
+<body class="p-6 md:p-20">
+    <div class="max-w-4xl mx-auto">
+        <a href="index.html" class="text-blue-400 mb-10 inline-block">← Back to Portfolio</a>
+        <div id="project-content" class="bg-slate-900 border border-slate-800 p-10 rounded-3xl shadow-2xl">
+            </div>
+    </div>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const id = params.get('id');
+        const content = document.getElementById('project-content');
+
+        const data = {
+            blood: { title: "Blood Donor App", desc: "This app connects blood donors with recipients. Built with Java, XML and PHP backend. It features real-time location and donor availability.", features: ["Donor Search", "Emergency Request", "Profile Management"] },
+            attendance: { title: "Attendance App", desc: "A robust solution for educational institutions to track student attendance. Integrated with MySQL database.", features: ["Barcode Scanning", "Report Generation", "Teacher Login"] },
+            ecommerce: { title: "E-commerce App", desc: "A complete mobile shopping platform with product categorization, cart system, and secure checkout.", features: ["Admin Panel", "Payment Integration", "User Reviews"] }
+        };
+
+        if(data[id]) {
+            content.innerHTML = `
+                <h1 class="text-4xl font-bold text-blue-400 mb-6">${data[id].title}</h1>
+                <p class="text-gray-300 text-xl mb-8 leading-relaxed">${data[id].desc}</p>
+                <h3 class="text-2xl font-bold mb-4">Key Features:</h3>
+                <ul class="list-disc pl-6 text-gray-400 space-y-2">
+                    ${data[id].features.map(f => `<li>${f}</li>`).join('')}
+                </ul>
+            `;
+        } else {
+            content.innerHTML = "<h1>Project Not Found</h1>";
+        }
+    </script>
+</body>
+</html>
