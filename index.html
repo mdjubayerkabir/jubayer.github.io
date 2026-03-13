@@ -8,140 +8,185 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
         body { background: #0f172a; color: white; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
         .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
         .gradient-text { background: linear-gradient(to right, #38bdf8, #818cf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         
         /* Circle Skill Progress */
-        .skill-circle { width: 100px; height: 100px; border-radius: 50%; display: flex; align-items: center; justify-content: center; position: relative; background: conic-gradient(#38bdf8 var(--p), #1e293b 0); margin: auto; }
-        .skill-circle::before { content: ""; position: absolute; width: 85px; height: 85px; background: #0f172a; border-radius: 50%; }
+        .skill-circle { width: 100px; height: 100px; border-radius: 50%; display: flex; align-items: center; justify-content: center; position: relative; background: conic-gradient(#38bdf8 var(--p), #1e293b 0); margin: auto; transition: 0.5s; }
+        .skill-circle::before { content: ""; position: absolute; width: 84px; height: 84px; background: #0f172a; border-radius: 50%; }
         .skill-content { position: relative; z-index: 10; font-weight: bold; }
 
-        .btn-hover:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(56, 189, 248, 0.2); }
+        /* Cursor blinking effect */
+        .cursor { border-right: 3px solid #38bdf8; animation: blink 0.7s infinite; }
+        @keyframes blink { 0%, 100% { border-color: transparent } 50% { border-color: #38bdf8 } }
     </style>
 </head>
-<body>
+<body class="overflow-x-hidden">
 
     <section class="min-h-screen flex flex-col justify-center items-center px-6 text-center">
-        <div data-aos="fade-down">
-            <div class="relative inline-block">
-                <img src="md_jubayer_kabir_image.jpg" alt="Jubayer" class="w-44 h-44 rounded-full border-4 border-blue-500 shadow-2xl mb-6 object-cover mx-auto">
-                <div class="absolute bottom-8 right-2 w-6 h-6 bg-green-500 border-4 border-slate-900 rounded-full"></div>
+        <div data-aos="fade-down" data-aos-duration="1000">
+            <div class="relative inline-block mb-8">
+                <img src="md_jubayer_kabir_image.jpg" alt="Jubayer" class="w-44 h-44 rounded-full border-4 border-blue-500 shadow-2xl object-cover mx-auto">
+                <div class="absolute bottom-4 right-2 w-6 h-6 bg-green-500 border-4 border-slate-900 rounded-full"></div>
             </div>
-            <h1 class="text-5xl md:text-6xl font-extrabold mb-2">I'm <span class="gradient-text">Md Jubayer Kabir</span></h1>
-            <p class="text-gray-400 text-xl mb-8">Crafting High-Performance Android Applications</p>
             
-            <div class="flex flex-wrap justify-center gap-4 mb-8">
-                <a href="resume.pdf" download class="btn-hover bg-blue-600 px-8 py-3 rounded-full font-bold flex items-center gap-2 transition">
+            <h1 class="text-5xl md:text-7xl font-extrabold mb-4">I'm <span class="gradient-text">Md Jubayer Kabir</span></h1>
+            
+            <p class="text-gray-400 text-xl md:text-2xl mb-10 h-8">
+                <span id="typing-text"></span><span class="cursor"></span>
+            </p>
+            
+            <div class="flex flex-wrap justify-center gap-4 mb-10">
+                <a href="resume.pdf" download class="bg-blue-600 hover:bg-blue-700 px-8 py-3 rounded-full font-bold flex items-center gap-2 transition-all transform hover:-translate-y-1 shadow-lg shadow-blue-500/20">
                     <i class="fas fa-download"></i> Download Resume
                 </a>
-                <a href="mailto:yourmail@gmail.com" class="btn-hover border border-blue-500 px-8 py-3 rounded-full font-bold transition">
+                <a href="mailto:yourmail@gmail.com" class="border border-blue-500 hover:bg-blue-500/10 px-8 py-3 rounded-full font-bold transition-all transform hover:-translate-y-1">
                     Hire Me
                 </a>
             </div>
 
-            <div class="flex justify-center space-x-6 text-3xl text-gray-400">
-                <a href="#" class="hover:text-blue-400 transition"><i class="fab fa-linkedin"></i></a>
-                <a href="#" class="hover:text-blue-600 transition"><i class="fab fa-facebook"></i></a>
-                <a href="#" class="hover:text-white transition"><i class="fab fa-github"></i></a>
+            <div class="flex justify-center space-x-8 text-3xl text-gray-400">
+                <a href="#" class="hover:text-blue-400 transition transform hover:scale-110"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="hover:text-blue-600 transition transform hover:scale-110"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="hover:text-white transition transform hover:scale-110"><i class="fab fa-github"></i></a>
             </div>
         </div>
     </section>
 
-    <section class="py-20 bg-slate-900/50 px-6">
-        <div class="max-w-4xl mx-auto glass p-10 rounded-3xl" data-aos="fade-up">
-            <h2 class="text-3xl font-bold mb-6 text-center gradient-text">Professional Summary</h2>
+    <section class="py-24 bg-slate-900/50 px-6">
+        <div class="max-w-4xl mx-auto glass p-10 rounded-[2rem]" data-aos="fade-up">
+            <h2 class="text-3xl font-bold mb-8 text-center gradient-text">Professional Summary</h2>
             <p class="text-gray-300 leading-relaxed text-lg text-center">
-                I am a dedicated Computer Science student and a passionate Android App Developer with over 2 years of experience in Java and XML. I have a proven track record of building scalable applications like Blood Donor networks and E-commerce platforms. My expertise lies in creating seamless UI/UX and robust backends using PHP/MySQL. I am committed to writing clean, maintainable code and staying updated with the latest mobile technology trends.
+                I am a dedicated Computer Science and Engineering student and a passionate Android App Developer specializing in Java and XML. With a strong focus on professional UI/UX design, I build educational, utility, and management applications. I have experience in integrating PHP and MySQL for powerful backends and am highly interested in app monetization and publishing. My goal is to create impactful mobile solutions that provide a seamless user experience.
             </p>
         </div>
     </section>
 
-    <section class="py-20 px-6 max-w-6xl mx-auto">
-        <h2 class="text-3xl font-bold text-center mb-12 gradient-text">Technical Expertise</h2>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-10">
+    <section class="py-24 px-6 max-w-6xl mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-16 gradient-text">Technical Skills</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-12">
             <div class="text-center" data-aos="zoom-in">
                 <div class="skill-circle" style="--p:90%"> <span class="skill-content text-xl">90%</span> </div>
-                <p class="mt-4 font-bold text-gray-400 uppercase tracking-widest">Java</p>
+                <p class="mt-6 font-bold tracking-widest text-blue-400 uppercase">Java</p>
             </div>
             <div class="text-center" data-aos="zoom-in" data-aos-delay="100">
                 <div class="skill-circle" style="--p:95%"> <span class="skill-content text-xl">95%</span> </div>
-                <p class="mt-4 font-bold text-gray-400 uppercase tracking-widest">XML (UI)</p>
+                <p class="mt-6 font-bold tracking-widest text-blue-400 uppercase">XML (UI)</p>
             </div>
             <div class="text-center" data-aos="zoom-in" data-aos-delay="200">
                 <div class="skill-circle" style="--p:80%"> <span class="skill-content text-xl">80%</span> </div>
-                <p class="mt-4 font-bold text-gray-400 uppercase tracking-widest">PHP/API</p>
+                <p class="mt-6 font-bold tracking-widest text-blue-400 uppercase">PHP/MySQL</p>
             </div>
             <div class="text-center" data-aos="zoom-in" data-aos-delay="300">
                 <div class="skill-circle" style="--p:85%"> <span class="skill-content text-xl">85%</span> </div>
-                <p class="mt-4 font-bold text-gray-400 uppercase tracking-widest">MySQL</p>
+                <p class="mt-6 font-bold tracking-widest text-blue-400 uppercase">Android Studio</p>
             </div>
         </div>
     </section>
 
-    <section class="py-20 px-6 max-w-5xl mx-auto text-center">
-        <h2 class="text-3xl font-bold mb-10 gradient-text">GitHub Activity</h2>
-        <div class="glass p-6 rounded-3xl overflow-hidden flex justify-center">
-            <img class="w-full max-w-2xl" src="https://github-readme-stats.vercel.app/api?username=mdjubayerkabir&show_icons=true&theme=tokyonight&hide_border=true" alt="GitHub Stats">
+    <section class="py-24 px-6 max-w-5xl mx-auto text-center">
+        <h2 class="text-3xl font-bold mb-12 gradient-text">Code Statistics</h2>
+        <div class="glass p-8 rounded-3xl flex justify-center items-center overflow-hidden shadow-2xl">
+            <img class="w-full max-w-2xl" src="https://github-readme-stats.vercel.app/api?username=mdjubayerkabir&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0f172a00" alt="GitHub Stats">
         </div>
     </section>
 
-    <section class="py-20 px-6 bg-slate-900/30">
-        <h2 class="text-3xl font-bold text-center mb-12 gradient-text">Featured Projects</h2>
-        <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+    <section class="py-24 px-6 bg-slate-900/30">
+        <h2 class="text-3xl font-bold text-center mb-16 gradient-text">Featured Projects</h2>
+        <div class="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto">
             
-            <div class="glass p-6 rounded-3xl transition-all duration-300 hover:border-blue-500/50 group" data-aos="fade-up">
-                <div class="h-44 bg-slate-800 rounded-2xl mb-4 overflow-hidden flex items-center justify-center relative">
-                    <i class="fas fa-heartbeat text-6xl text-red-500 group-hover:scale-110 transition"></i>
+            <div class="glass p-8 rounded-[2rem] hover:border-blue-500/50 transition-all group" data-aos="fade-up">
+                <div class="h-40 bg-slate-800 rounded-2xl mb-6 flex items-center justify-center relative overflow-hidden">
+                    <i class="fas fa-heartbeat text-6xl text-red-500 group-hover:scale-125 transition duration-500"></i>
                 </div>
-                <div class="flex gap-2 mb-3">
-                    <span class="text-[10px] bg-blue-500/20 text-blue-400 px-2 py-1 rounded">Java</span>
-                    <span class="text-[10px] bg-green-500/20 text-green-400 px-2 py-1 rounded">PHP</span>
+                <div class="flex gap-2 mb-4 text-[10px] font-bold uppercase tracking-tighter">
+                    <span class="bg-blue-500/20 text-blue-400 px-2 py-1 rounded">Java</span>
+                    <span class="bg-green-500/20 text-green-400 px-2 py-1 rounded">MySQL</span>
                 </div>
-                <h3 class="text-xl font-bold">Blood Donor App</h3>
-                <p class="text-gray-400 text-sm mt-2 mb-4">Real-time donor location tracking and emergency alerts.</p>
-                <a href="project-details.html?id=blood" class="text-blue-400 text-sm font-bold flex items-center gap-2">View Details <i class="fas fa-arrow-right text-xs"></i></a>
+                <h3 class="text-2xl font-bold mb-3">Blood Donor App</h3>
+                <p class="text-gray-400 text-sm leading-relaxed mb-6">A life-saving platform to connect donors with people in emergency.</p>
+                <a href="project-details.html?id=blood" class="text-blue-400 font-bold hover:text-blue-300 flex items-center gap-2">Explore <i class="fas fa-arrow-right text-xs"></i></a>
             </div>
 
-            <div class="glass p-6 rounded-3xl transition-all duration-300 hover:border-blue-500/50 group" data-aos="fade-up" data-aos-delay="100">
-                <div class="h-44 bg-slate-800 rounded-2xl mb-4 overflow-hidden flex items-center justify-center">
-                    <i class="fas fa-shopping-bag text-6xl text-orange-500 group-hover:scale-110 transition"></i>
+            <div class="glass p-8 rounded-[2rem] hover:border-blue-500/50 transition-all group" data-aos="fade-up" data-aos-delay="100">
+                <div class="h-40 bg-slate-800 rounded-2xl mb-6 flex items-center justify-center relative overflow-hidden">
+                    <i class="fas fa-user-check text-6xl text-blue-500 group-hover:scale-125 transition duration-500"></i>
                 </div>
-                <div class="flex gap-2 mb-3">
-                    <span class="text-[10px] bg-blue-500/20 text-blue-400 px-2 py-1 rounded">Firebase</span>
-                    <span class="text-[10px] bg-yellow-500/20 text-yellow-400 px-2 py-1 rounded">Payment</span>
+                <div class="flex gap-2 mb-4 text-[10px] font-bold uppercase tracking-tighter">
+                    <span class="bg-blue-500/20 text-blue-400 px-2 py-1 rounded">Java</span>
+                    <span class="bg-purple-500/20 text-purple-400 px-2 py-1 rounded">Database</span>
                 </div>
-                <h3 class="text-xl font-bold">E-commerce Pro</h3>
-                <p class="text-gray-400 text-sm mt-2 mb-4">Complete shopping solution with admin dashboard.</p>
-                <a href="project-details.html?id=ecommerce" class="text-blue-400 text-sm font-bold flex items-center gap-2">View Details <i class="fas fa-arrow-right text-xs"></i></a>
+                <h3 class="text-2xl font-bold mb-3">Attendance System</h3>
+                <p class="text-gray-400 text-sm leading-relaxed mb-6">Digitalizing classroom records with professional reporting tools.</p>
+                <a href="project-details.html?id=attendance" class="text-blue-400 font-bold hover:text-blue-300 flex items-center gap-2">Explore <i class="fas fa-arrow-right text-xs"></i></a>
             </div>
 
-            <div class="glass p-6 rounded-3xl transition-all duration-300 hover:border-blue-500/50 group" data-aos="fade-up" data-aos-delay="200">
-                <div class="h-44 bg-slate-800 rounded-2xl mb-4 overflow-hidden flex items-center justify-center">
-                    <i class="fas fa-mosque text-6xl text-emerald-500 group-hover:scale-110 transition"></i>
+            <div class="glass p-8 rounded-[2rem] hover:border-blue-500/50 transition-all group" data-aos="fade-up" data-aos-delay="200">
+                <div class="h-40 bg-slate-800 rounded-2xl mb-6 flex items-center justify-center relative overflow-hidden">
+                    <i class="fas fa-mosque text-6xl text-emerald-500 group-hover:scale-125 transition duration-500"></i>
                 </div>
-                <div class="flex gap-2 mb-3">
-                    <span class="text-[10px] bg-blue-500/20 text-blue-400 px-2 py-1 rounded">SQLite</span>
-                    <span class="text-[10px] bg-emerald-500/20 text-emerald-400 px-2 py-1 rounded">Offline</span>
+                <div class="flex gap-2 mb-4 text-[10px] font-bold uppercase tracking-tighter">
+                    <span class="bg-blue-500/20 text-blue-400 px-2 py-1 rounded">Offline</span>
+                    <span class="bg-emerald-500/20 text-emerald-400 px-2 py-1 rounded">Library</span>
                 </div>
-                <h3 class="text-xl font-bold">Islamic Lifestyle</h3>
-                <p class="text-gray-400 text-sm mt-2 mb-4">Prayer times, Quranic resources, and daily Duas.</p>
-                <a href="project-details.html?id=islamic" class="text-blue-400 text-sm font-bold flex items-center gap-2">View Details <i class="fas fa-arrow-right text-xs"></i></a>
+                <h3 class="text-2xl font-bold mb-3">Islamic Pro App</h3>
+                <p class="text-gray-400 text-sm leading-relaxed mb-6">A content-based utility app with clean UI and offline access.</p>
+                <a href="project-details.html?id=islamic" class="text-blue-400 font-bold hover:text-blue-300 flex items-center gap-2">Explore <i class="fas fa-arrow-right text-xs"></i></a>
             </div>
 
         </div>
     </section>
 
-    <footer class="py-20 text-center px-6">
-        <p class="text-gray-500 mb-4">© 2026 Md Jubayer Kabir. All rights reserved.</p>
-        <div class="flex justify-center space-x-4">
-            <div class="w-2 h-2 bg-blue-500 rounded-full"></div>
-            <div class="w-2 h-2 bg-purple-500 rounded-full"></div>
-            <div class="w-2 h-2 bg-blue-500 rounded-full"></div>
-        </div>
+    <footer class="py-12 border-t border-slate-800 text-center px-6">
+        <p class="text-gray-500 italic">Built with code and passion by Md Jubayer Kabir</p>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>AOS.init({ duration: 1000, once: true });</script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+
+        // Typewriter Effect Logic
+        const textElement = document.getElementById("typing-text");
+        const professions = [
+            "Professional Android Developer",
+            "Java & XML Specialist",
+            "CSE Student & Researcher",
+            "UI/UX Design Enthusiast"
+        ];
+        
+        let charIndex = 0;
+        let professionIndex = 0;
+        let isDeleting = false;
+        let typeSpeed = 100;
+
+        function type() {
+            const current = professions[professionIndex];
+            
+            if (isDeleting) {
+                textElement.textContent = current.substring(0, charIndex - 1);
+                charIndex--;
+                typeSpeed = 50;
+            } else {
+                textElement.textContent = current.substring(0, charIndex + 1);
+                charIndex++;
+                typeSpeed = 100;
+            }
+
+            if (!isDeleting && charIndex === current.length) {
+                isDeleting = true;
+                typeSpeed = 2000;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                professionIndex = (professionIndex + 1) % professions.length;
+                typeSpeed = 500;
+            }
+
+            setTimeout(type, typeSpeed);
+        }
+
+        document.addEventListener("DOMContentLoaded", type);
+    </script>
 </body>
 </html>
